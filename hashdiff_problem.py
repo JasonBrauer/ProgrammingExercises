@@ -89,15 +89,26 @@ def _create_listed_comparison(missing_items, additional_items):
         if not isinstance(key, list):
             comparison_list.append(['-', key, missing_items[key]])
         else:
-            comparison_list.append(['-', '.'.join(key), '??'])
+            comparison_list.append(['-', '.'.join(key), _crawl_dict_for_value(key, missing_items)])
 
     for key in _crawl_dicts_for_non_dict_keys(additional_items):
         if not isinstance(key, list):
-            comparison_list.append(['+', key, missing_items[key]])
+            comparison_list.append(['+', key, additional_items[key]])
         else:
-            comparison_list.append(['+', '.'.join(key), '??'])
+            comparison_list.append(['+', '.'.join(key), _crawl_dict_for_value(key, additional_items)])
         
     return comparison_list
+
+
+def _crawl_dict_for_value(key_list, dict_of_items):
+    '''
+    '''
+    current_layer = dict_of_items[key_list[0]]
+    for key in key_list[1:]:
+        if key in current_layer:
+            return current_layer[key]
+        else:
+            current_layer = current_layer[key]
 
 
 def _crawl_dicts_for_non_dict_keys(dict_of_items):
