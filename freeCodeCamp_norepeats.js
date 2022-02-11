@@ -1,7 +1,7 @@
 // 24 - (2! * (4-2+1) + 2! * (4-2+1))
-// = 24 - (4 + 4) = 16
+// = 24 - (6 + 6) = 12
 
-// 6 - (2! * (3-2+1) + 0)) = 4
+// 6 - (2! * (3-2+1) + 0)) = 2
 
 function permAlone(str) {
     let countStringInstances = _countEachChar(str);
