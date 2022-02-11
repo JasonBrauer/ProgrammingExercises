@@ -44,7 +44,7 @@ def diff(actual, expected):
 
     print(_create_listed_comparison(missing_items, additional_items))
 
-    return []
+    return _create_listed_comparison(missing_items, additional_items)
 
 
 # check if each expected key and value is in actual
